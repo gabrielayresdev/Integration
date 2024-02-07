@@ -1,0 +1,36 @@
+import styled from "styled-components/native";
+
+export interface InputStylesInterface {
+  marginBottom?: string;
+}
+
+export const InputContainer = styled.View<InputStylesInterface>`
+  width: 100%;
+
+  margin-bottom: ${(props) =>
+    props.marginBottom ? props.marginBottom : "1.5rem"};
+`;
+
+export const Label = styled.Text`
+  font-size: 1.25rem;
+  color: #33415c;
+  font-family: "Ubuntu Regular";
+
+  margin-bottom: 0.5rem;
+`;
+
+export const InputField = styled.TextInput.attrs({
+  placeholderTextColor: "#979dac",
+})`
+  border: 1px solid #33415c;
+  border-color: #33415c;
+  border-radius: 0.75rem;
+  padding: 0.9375rem 1rem;
+
+  font-size: 1.25rem;
+  font-family: "Ubuntu Regular";
+  color: #33415c;
+
+  background: #f1f4ff;
+  outline-style: none;
+`;
