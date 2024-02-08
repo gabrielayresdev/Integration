@@ -45,7 +45,10 @@ export const Form = styled.View`
 `;
 
 export const FlexRow = styled.View`
-  height: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 `;
 
 export const Anchor = styled.TouchableOpacity`

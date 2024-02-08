@@ -1,5 +1,6 @@
 import React from "react";
 import {
+  Anchor,
   FlexRow,
   Form,
   LoginDiv,
@@ -37,7 +38,14 @@ const Login = () => {
           marginBottom="1.25rem"
         />
 
-        <FlexRow></FlexRow>
+        <FlexRow>
+          <Checkbox
+            checked={remember}
+            setChecked={setRemember}
+            label="Remember me"
+          />
+          <Anchor>Forgot your password?</Anchor>
+        </FlexRow>
       </Form>
     </LoginDiv>
   );
