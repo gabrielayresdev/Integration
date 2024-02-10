@@ -1,6 +1,5 @@
 import React from "react";
-import Svg, { Circle } from "react-native-svg";
-import { LoginDiv, FlexRow, Anchor } from "./styles";
+import { RegisterDiv } from "./styles";
 import {
   CircleDetails,
   Header,
@@ -12,16 +11,16 @@ import {
   BottomDetailsFirstSvg,
 } from "../../styles/formStyles";
 import Input from "../../components/Input/Input";
-import Checkbox from "../../components/Checkbox/Checkbox";
 import Button from "../../components/Button/Button";
 import TwoLineAnchor from "../../components/TwoLineAnchor/TwoLineAnchor";
+import Svg, { Circle } from "react-native-svg";
 
-const Login = () => {
+const Register = () => {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
-  const [remember, setRemember] = React.useState(false);
+  const [password2, setPassword2] = React.useState("");
   return (
-    <LoginDiv>
+    <RegisterDiv>
       <CircleDetails
         width="445px"
         viewBox="0 0 100 100"
@@ -47,23 +46,20 @@ const Login = () => {
           setValue={setPassword}
           label="Password"
           placeholder="••••••••••••••••••••"
+        />
+        <Input
+          value={password2}
+          setValue={setPassword2}
+          label="Password"
+          placeholder="••••••••••••••••••••"
           marginBottom="1.25rem"
         />
-
-        <FlexRow>
-          <Checkbox
-            checked={remember}
-            setChecked={setRemember}
-            label="Remember me"
-          />
-          <Anchor>Forgot your password?</Anchor>
-        </FlexRow>
 
         <ButtonsContainer>
           <Button text="Sign in" onClick={() => {}} />
           <TwoLineAnchor
-            firstLine="Don't have an account yet?"
-            secondLine="Create an account now"
+            firstLine="Already have an account?"
+            secondLine="Sign in now"
           />
         </ButtonsContainer>
 
@@ -80,8 +76,8 @@ const Login = () => {
           </Svg>
         </BottomDetails>
       </Form>
-    </LoginDiv>
+    </RegisterDiv>
   );
 };
 
-export default Login;
+export default Register;
