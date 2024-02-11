@@ -15,11 +15,33 @@ import Input from "../../components/Input/Input";
 import Checkbox from "../../components/Checkbox/Checkbox";
 import Button from "../../components/Button/Button";
 import TwoLineAnchor from "../../components/TwoLineAnchor/TwoLineAnchor";
+import { Controller, useForm } from "react-hook-form";
+import { Text } from "react-native";
+
+interface FormData {
+  email: string;
+  password: string;
+}
 
 const Login = () => {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [remember, setRemember] = React.useState(false);
+
+  const onSubmit = (data: FormData) => {
+    console.log(data);
+  };
+
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    defaultValues: {
+      email: "",
+      password: "",
+    },
+  });
   return (
     <LoginDiv>
       <CircleDetails
@@ -36,7 +58,42 @@ const Login = () => {
         <Paragraph> Sign in with you email and password</Paragraph>
       </Header>
       <Form>
-        <Input
+        <Controller
+          control={control}
+          render={({ field: { onChange, onBlur, value } }) => (
+            <Input
+              placeholder="email@example.com"
+              value={value}
+              onChangeText={onChange}
+              onBlur={onBlur}
+              label="Email"
+              error={errors.email}
+            />
+          )}
+          rules={{
+            required: "Email is required",
+          }}
+          name="email"
+        />
+        <Controller
+          control={control}
+          render={({ field: { onChange, onBlur, value } }) => (
+            <Input
+              placeholder="••••••••••••••••••••"
+              value={value}
+              onChangeText={onChange}
+              onBlur={onBlur}
+              label="Password"
+              error={errors.password}
+              secureTextEntry
+            />
+          )}
+          rules={{
+            required: "Email is required",
+          }}
+          name="password"
+        />
+        {/* <Input
           value={email}
           setValue={setEmail}
           label="Email"
@@ -48,8 +105,7 @@ const Login = () => {
           label="Password"
           placeholder="••••••••••••••••••••"
           marginBottom="1.25rem"
-        />
-
+        /> */}
         <FlexRow>
           <Checkbox
             checked={remember}
@@ -60,7 +116,7 @@ const Login = () => {
         </FlexRow>
 
         <ButtonsContainer>
-          <Button text="Sign in" onClick={() => {}} />
+          <Button text="Sign in" onClick={handleSubmit(onSubmit)} />
           <TwoLineAnchor
             firstLine="Don't have an account yet?"
             secondLine="Create an account now"

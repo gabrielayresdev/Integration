@@ -1,5 +1,6 @@
 import React from "react";
-import { Btn, BtnStyledInterface } from "./styles";
+import { Btn, BtnStyledInterface, BtnText } from "./styles";
+import { Text } from "react-native";
 
 interface ButtonInterface extends BtnStyledInterface {
   text: string;
@@ -9,7 +10,7 @@ interface ButtonInterface extends BtnStyledInterface {
 const Button = ({ text, onClick, ...args }: ButtonInterface) => {
   return (
     <Btn onPress={onClick} {...args}>
-      {text}
+      <BtnText>{text}</BtnText>
     </Btn>
   );
 };

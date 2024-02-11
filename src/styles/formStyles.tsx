@@ -57,12 +57,6 @@ export const Form = styled.View`
   padding: 0 1rem;
 `;
 
-export const Anchor = styled.TouchableOpacity`
-  color: #0096c7;
-
-  font-family: "Ubuntu Medium";
-`;
-
 export const ButtonsContainer = styled.View`
   display: flex;
   gap: 1.5rem;

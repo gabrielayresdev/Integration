@@ -18,7 +18,7 @@ export const FlexRow = styled.View`
   justify-content: space-between;
 `;
 
-export const Anchor = styled.TouchableOpacity`
+export const Anchor = styled.Text`
   color: #0096c7;
 
   font-family: "Ubuntu Medium";

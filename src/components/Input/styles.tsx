@@ -11,12 +11,26 @@ export const InputContainer = styled.View<InputStylesInterface>`
     props.marginBottom ? props.marginBottom : "1.5rem"};
 `;
 
+export const FlexBox = styled.View`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+`;
+
 export const Label = styled.Text`
   font-size: 1.25rem;
   color: #33415c;
   font-family: "Ubuntu Regular";
 
   margin-bottom: 0.5rem;
+`;
+
+export const Error = styled.Text`
+  color: #dc3838;
+  font-size: 0.875rem;
+
+  font-family: "Ubuntu Regular";
 `;
 
 export const InputField = styled.TextInput.attrs({

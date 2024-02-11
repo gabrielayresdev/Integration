@@ -6,16 +6,17 @@ export const Container = styled.View`
   gap: 0.5rem;
 `;
 
-export const GhostText = styled.View`
+export const GhostText = styled.Text`
   color: #979dac;
   font-family: "Ubuntu Regular";
 `;
 
-export const AnchorText = styled.TouchableOpacity`
+export const AnchorText = styled.Text`
   color: #33415c;
   font-family: "Ubuntu Regular";
 
   display: flex;
+  flex-direction: column;
 `;
 
 export const Underline = styled.View`

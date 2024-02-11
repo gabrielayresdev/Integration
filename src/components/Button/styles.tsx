@@ -9,8 +9,6 @@ export interface BtnStyledInterface {
 
 export const Btn = styled.TouchableOpacity<BtnStyledInterface>`
   background: ${({ background }) => (background ? background : "#007AFF")};
-  color: ${({ color }) => (color ? color : "#f1f4ff")};
-  font-size: ${({ font }) => (font ? font : "1.25rem")};
   padding: ${({ padding }) => (padding ? padding : ".975rem")};
 
   width: 100%;
@@ -18,8 +16,11 @@ export const Btn = styled.TouchableOpacity<BtnStyledInterface>`
 
   display: flex;
   align-items: center;
+`;
 
+export const BtnText = styled.Text<BtnStyledInterface>`
+  color: ${({ color }) => (color ? color : "#f1f4ff")};
+  font-size: ${({ font }) => (font ? font : "1.25rem")};
   font-weight: 500;
-
   font-family: "Ubuntu Medium";
 `;
