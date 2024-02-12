@@ -1,11 +1,14 @@
 import { StyleSheet, Text, View } from "react-native";
 import Login from "./src/pages/Login/Login";
 import Register from "./src/pages/Register/Register";
+import RegisterContextProvider from "./src/contexts/RegisterContext";
 
 export default function App() {
   return (
     <View>
-      <Register />
+      <RegisterContextProvider>
+        <Register />
+      </RegisterContextProvider>
     </View>
   );
 }
