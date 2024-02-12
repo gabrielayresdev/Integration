@@ -16,7 +16,6 @@ import Checkbox from "../../components/Checkbox/Checkbox";
 import Button from "../../components/Button/Button";
 import TwoLineAnchor from "../../components/TwoLineAnchor/TwoLineAnchor";
 import { Controller, useForm } from "react-hook-form";
-import { Text } from "react-native";
 
 interface FormData {
   email: string;
@@ -24,8 +23,6 @@ interface FormData {
 }
 
 const Login = () => {
-  const [email, setEmail] = React.useState("");
-  const [password, setPassword] = React.useState("");
   const [remember, setRemember] = React.useState(false);
 
   const onSubmit = (data: FormData) => {

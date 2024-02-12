@@ -14,11 +14,31 @@ import Input from "../../components/Input/Input";
 import Button from "../../components/Button/Button";
 import TwoLineAnchor from "../../components/TwoLineAnchor/TwoLineAnchor";
 import Svg, { Circle } from "react-native-svg";
+import { Controller, useForm } from "react-hook-form";
+
+interface FormData {
+  email: string;
+  password: string;
+  password2: string;
+}
 
 const Register = () => {
-  const [email, setEmail] = React.useState("");
-  const [password, setPassword] = React.useState("");
-  const [password2, setPassword2] = React.useState("");
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    defaultValues: {
+      email: "",
+      password: "",
+      password2: "",
+    },
+  });
+
+  const onSubmit = (data: FormData) => {
+    console.log(data);
+  };
+
   return (
     <RegisterDiv>
       <CircleDetails
@@ -35,28 +55,68 @@ const Register = () => {
         <Paragraph> Sign in with you email and password</Paragraph>
       </Header>
       <Form>
-        <Input
-          value={email}
-          setValue={setEmail}
-          label="Email"
-          placeholder="email@example.com"
+        <Controller
+          control={control}
+          render={({ field: { onChange, onBlur, value } }) => (
+            <Input
+              placeholder="email@example.com"
+              value={value}
+              onChangeText={onChange}
+              onBlur={onBlur}
+              label="Email"
+              error={errors.email}
+              secureTextEntry
+            />
+          )}
+          rules={{
+            required: "Email is required",
+            pattern: {
+              value:
+                /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/,
+              message: "Enter with a valid email",
+            },
+          }}
+          name="email"
         />
-        <Input
-          value={password}
-          setValue={setPassword}
-          label="Password"
-          placeholder="••••••••••••••••••••"
+        <Controller
+          control={control}
+          render={({ field: { onChange, onBlur, value } }) => (
+            <Input
+              placeholder="••••••••••••••••••••"
+              value={value}
+              onChangeText={onChange}
+              onBlur={onBlur}
+              label="Email"
+              error={errors.email}
+              secureTextEntry
+            />
+          )}
+          rules={{
+            required: "Password is required",
+          }}
+          name="password"
         />
-        <Input
-          value={password2}
-          setValue={setPassword2}
-          label="Password"
-          placeholder="••••••••••••••••••••"
-          marginBottom="1.25rem"
+        <Controller
+          control={control}
+          render={({ field: { onChange, onBlur, value } }) => (
+            <Input
+              placeholder="••••••••••••••••••••"
+              value={value}
+              onChangeText={onChange}
+              onBlur={onBlur}
+              label="Email"
+              error={errors.email}
+              secureTextEntry
+            />
+          )}
+          rules={{
+            required: "Confirm your password",
+          }}
+          name="password2"
         />
 
         <ButtonsContainer>
-          <Button text="Sign in" onClick={() => {}} />
+          <Button text="Sign up" onClick={handleSubmit(onSubmit)} />
           <TwoLineAnchor
             firstLine="Already have an account?"
             secondLine="Sign in now"
