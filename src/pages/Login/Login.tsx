@@ -117,6 +117,7 @@ const Login = () => {
           <TwoLineAnchor
             firstLine="Don't have an account yet?"
             secondLine="Create an account now"
+            href="register"
           />
         </ButtonsContainer>
 

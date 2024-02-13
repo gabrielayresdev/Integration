@@ -10,7 +10,7 @@ interface ButtonInterface extends BtnStyledInterface {
 const Button = ({ text, onClick, ...args }: ButtonInterface) => {
   return (
     <Btn onPress={onClick} {...args}>
-      <BtnText>{text}</BtnText>
+      <BtnText {...args}>{text}</BtnText>
     </Btn>
   );
 };

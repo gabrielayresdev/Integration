@@ -9,6 +9,7 @@ export const LoginDiv = styled.View`
 
   position: relative;
   overflow: hidden;
+  background: #fff;
 `;
 
 export const FlexRow = styled.View`

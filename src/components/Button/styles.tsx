@@ -7,7 +7,7 @@ export interface BtnStyledInterface {
   padding?: string;
 }
 
-export const Btn = styled.TouchableOpacity<BtnStyledInterface>`
+export const Btn = styled.Pressable<BtnStyledInterface>`
   background: ${({ background }) => (background ? background : "#007AFF")};
   padding: ${({ padding }) => (padding ? padding : ".975rem")};
 

@@ -5,29 +5,17 @@ import {
   Header,
   Title,
   Paragraph,
-  Form,
-  ButtonsContainer,
   BottomDetails,
   BottomDetailsFirstSvg,
 } from "../../styles/formStyles";
-import Input from "../../components/Input/Input";
-import Button from "../../components/Button/Button";
-import TwoLineAnchor from "../../components/TwoLineAnchor/TwoLineAnchor";
 import Svg, { Circle } from "react-native-svg";
-import { Controller, useForm } from "react-hook-form";
 import { useRegisterContext } from "../../contexts/RegisterContext";
 import UserAuth from "../../components/RegisterPages/UserAuth";
-import Login from "../Login/Login";
-
-interface FormData {
-  email: string;
-  password: string;
-  password2: string;
-}
+import UserData from "../../components/RegisterPages/UserData";
 
 const Register = () => {
   const { pagination } = useRegisterContext();
-  const pages = [<UserAuth />];
+  const pages = [<UserAuth />, <UserData />];
 
   return (
     <RegisterDiv>

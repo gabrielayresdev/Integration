@@ -9,4 +9,5 @@ export const RegisterDiv = styled.View`
 
   position: relative;
   overflow: hidden;
+  background: #fff;
 `;

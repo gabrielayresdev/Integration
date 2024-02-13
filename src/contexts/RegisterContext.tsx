@@ -14,6 +14,10 @@ export interface RegisterDataInterface {
   email: string;
   password: string;
   password2: string;
+  firstName: string;
+  secondName: string;
+  CPF: string;
+  phone: string;
 }
 
 interface PaginationInterface {
@@ -24,19 +28,26 @@ interface PaginationInterface {
 }
 
 interface IRegisterContext {
-  formValues: RegisterDataInterface;
   pagination: PaginationInterface;
   control: Control<
     {
       email: string;
       password: string;
       password2: string;
+      firstName: string;
+      secondName: string;
+      CPF: string;
+      phone: string;
     },
     any,
     {
       email: string;
       password: string;
       password2: string;
+      firstName: string;
+      secondName: string;
+      CPF: string;
+      phone: string;
     }
   >;
   handleSubmit: UseFormHandleSubmit<
@@ -55,11 +66,19 @@ interface IRegisterContext {
     email: string;
     password: string;
     password2: string;
+    firstName: string;
+    secondName: string;
+    CPF: string;
+    phone: string;
   }>;
   watch: UseFormWatch<{
     email: string;
     password: string;
     password2: string;
+    firstName: string;
+    secondName: string;
+    CPF: string;
+    phone: string;
   }>;
 }
 
@@ -70,11 +89,6 @@ export function useRegisterContext() {
 }
 
 const RegisterContextProvider = ({ children }: React.PropsWithChildren) => {
-  const formValues: RegisterDataInterface = {
-    email: "",
-    password: "",
-    password2: "",
-  };
   const {
     control,
     handleSubmit,
@@ -82,9 +96,13 @@ const RegisterContextProvider = ({ children }: React.PropsWithChildren) => {
     watch,
   } = useForm({
     defaultValues: {
-      email: formValues.email,
-      password: formValues.password,
-      password2: formValues.password2,
+      email: "",
+      password: "",
+      password2: "",
+      firstName: "",
+      secondName: "",
+      CPF: "",
+      phone: "",
     },
   });
 
@@ -92,7 +110,7 @@ const RegisterContextProvider = ({ children }: React.PropsWithChildren) => {
 
   return (
     <RegisterContext.Provider
-      value={{ formValues, pagination, control, handleSubmit, errors, watch }}
+      value={{ pagination, control, handleSubmit, errors, watch }}
     >
       {children}
     </RegisterContext.Provider>

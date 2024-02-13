@@ -22,7 +22,6 @@ const UserAuth = () => {
   passwordRef.current = watch("password", "");
 
   const onSubmit = (data: RegisterDataInterface) => {
-    console.log(data);
     pagination.goNext();
   };
 
@@ -100,6 +99,7 @@ const UserAuth = () => {
           <TwoLineAnchor
             firstLine="Already have an account?"
             secondLine="Sign in now"
+            href="login"
           />
         </ButtonsContainer>
       </Form>
