@@ -38,6 +38,11 @@ interface IRegisterContext {
       secondName: string;
       CPF: string;
       phone: string;
+      CEP: string;
+      estado: string;
+      bairro: string;
+      numero: string;
+      complemento: string;
     },
     any,
     {
@@ -48,6 +53,11 @@ interface IRegisterContext {
       secondName: string;
       CPF: string;
       phone: string;
+      CEP: string;
+      estado: string;
+      bairro: string;
+      numero: string;
+      complemento: string;
     }
   >;
   handleSubmit: UseFormHandleSubmit<
@@ -70,6 +80,11 @@ interface IRegisterContext {
     secondName: string;
     CPF: string;
     phone: string;
+    CEP: string;
+    estado: string;
+    bairro: string;
+    numero: string;
+    complemento: string;
   }>;
   watch: UseFormWatch<{
     email: string;
@@ -79,6 +94,11 @@ interface IRegisterContext {
     secondName: string;
     CPF: string;
     phone: string;
+    CEP: string;
+    estado: string;
+    bairro: string;
+    numero: string;
+    complemento: string;
   }>;
 }
 
@@ -103,6 +123,11 @@ const RegisterContextProvider = ({ children }: React.PropsWithChildren) => {
       secondName: "",
       CPF: "",
       phone: "",
+      CEP: "",
+      estado: "",
+      bairro: "",
+      numero: "",
+      complemento: "",
     },
   });
 
