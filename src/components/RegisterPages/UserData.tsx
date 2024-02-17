@@ -13,7 +13,6 @@ import {
 import { Controller } from "react-hook-form";
 import Input from "../Input/Input";
 import Button from "../Button/Button";
-import TwoLineAnchor from "../TwoLineAnchor/TwoLineAnchor";
 
 const UserData = () => {
   const { pagination, control, handleSubmit, errors, watch } =
@@ -76,6 +75,7 @@ const UserData = () => {
               onChangeText={onChange}
               onBlur={onBlur}
               label="CPF"
+              mask={{ type: "cpf", options: {} }}
               error={errors.CPF}
             />
           )}
@@ -93,12 +93,20 @@ const UserData = () => {
           control={control}
           render={({ field: { onChange, onBlur, value } }) => (
             <Input
-              placeholder="(000) 00000-0000"
+              placeholder="(021) 00000-0000"
               value={value}
               onChangeText={onChange}
               onBlur={onBlur}
               label="Phone"
               error={errors.phone}
+              mask={{
+                type: "cel-phone",
+                options: {
+                  maskType: "BRL",
+                  withDDD: true,
+                  dddMask: "(99) ",
+                },
+              }}
             />
           )}
           rules={{

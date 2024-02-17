@@ -1,23 +1,34 @@
-import React, { SetStateAction } from "react";
+import React from "react";
 import {
   Error,
   FlexBox,
   InputContainer,
   InputField,
-  InputStylesInterface,
+  InputFieldMasked,
   Label,
 } from "./styles";
-import { TextInputProps, View } from "react-native";
 import { FieldError } from "react-hook-form";
+import { TextInputProps } from "react-native";
+import {
+  TextInputMask,
+  TextInputMaskOptionProp,
+  TextInputMaskTypeProp,
+} from "react-native-masked-text";
 
-//! Fazer o extends funcionar
-interface InputInterface extends TextInputProps {
+interface maskInterface {
+  type: TextInputMaskTypeProp;
+  options: TextInputMaskOptionProp | undefined;
+}
+
+interface InputInterface {
   value: string;
   onChangeText: (text: String) => void;
   onBlur?: VoidFunction;
   label?: string;
   placeholder?: string;
   error: FieldError | undefined;
+  secureTextEntry?: boolean;
+  mask?: maskInterface;
 }
 
 const Input = ({
@@ -27,6 +38,7 @@ const Input = ({
   label,
   placeholder = "",
   error,
+  mask,
   ...args
 }: InputInterface) => {
   return (
@@ -35,13 +47,25 @@ const Input = ({
         <Label>{label}</Label>
         <Error>{error ? error.message : null}</Error>
       </FlexBox>
-      <InputField
-        placeholder={placeholder}
-        value={value}
-        onChangeText={onChangeText}
-        onBlur={onBlur}
-        {...args}
-      />
+      {mask ? (
+        <InputFieldMasked
+          placeholder={placeholder}
+          value={value}
+          type={mask.type}
+          options={mask.options}
+          onChangeText={(value) => onChangeText(value)}
+          onBlur={onBlur}
+          {...args}
+        />
+      ) : (
+        <InputField
+          placeholder={placeholder}
+          value={value}
+          onChangeText={(value) => onChangeText(value)}
+          onBlur={onBlur}
+          {...args}
+        />
+      )}
     </InputContainer>
   );
 };

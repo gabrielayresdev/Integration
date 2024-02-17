@@ -1,4 +1,5 @@
 import styled from "styled-components/native";
+import { TextInputMask } from "react-native-masked-text";
 
 export interface InputStylesInterface {
   marginBottom?: string;
@@ -34,6 +35,22 @@ export const Error = styled.Text`
 `;
 
 export const InputField = styled.TextInput.attrs({
+  placeholderTextColor: "#979dac",
+})`
+  border: 1px solid #33415c;
+  border-color: #33415c;
+  border-radius: 0.75rem;
+  padding: 0.9375rem 1rem;
+
+  font-size: 1.25rem;
+  font-family: "Ubuntu Regular";
+  color: #33415c;
+
+  background: #f1f4ff;
+  outline-style: none;
+`;
+
+export const InputFieldMasked = styled(TextInputMask).attrs({
   placeholderTextColor: "#979dac",
 })`
   border: 1px solid #33415c;

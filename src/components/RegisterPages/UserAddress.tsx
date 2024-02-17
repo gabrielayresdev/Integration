@@ -3,17 +3,10 @@ import {
   RegisterDataInterface,
   useRegisterContext,
 } from "../../contexts/RegisterContext";
-import {
-  Header,
-  Title,
-  Paragraph,
-  Form,
-  ButtonsContainer,
-} from "../../styles/formStyles";
+import { Form, ButtonsContainer } from "../../styles/formStyles";
 import { Controller } from "react-hook-form";
 import Input from "../Input/Input";
 import Button from "../Button/Button";
-import TwoLineAnchor from "../TwoLineAnchor/TwoLineAnchor";
 
 const UserAddress = () => {
   const { pagination, control, handleSubmit, errors, watch } =
@@ -41,6 +34,7 @@ const UserAddress = () => {
               onBlur={onBlur}
               label="CEP"
               error={errors.CEP}
+              mask={{ type: "custom", options: { mask: "99999-999" } }}
             />
           )}
           rules={{
