@@ -68,7 +68,7 @@ const Login = () => {
             />
           )}
           rules={{
-            required: "Email is required",
+            required: "Email é necessário",
           }}
           name="email"
         />
@@ -80,43 +80,31 @@ const Login = () => {
               value={value}
               onChangeText={onChange}
               onBlur={onBlur}
-              label="Password"
+              label="Senha"
               error={errors.password}
               secureTextEntry
             />
           )}
           rules={{
-            required: "Email is required",
+            required: "Senha é necessária",
           }}
           name="password"
         />
-        {/* <Input
-          value={email}
-          setValue={setEmail}
-          label="Email"
-          placeholder="email@example.com"
-        />
-        <Input
-          value={password}
-          setValue={setPassword}
-          label="Password"
-          placeholder="••••••••••••••••••••"
-          marginBottom="1.25rem"
-        /> */}
+
         <FlexRow>
           <Checkbox
             checked={remember}
             setChecked={setRemember}
-            label="Remember me"
+            label="Lembrar conta"
           />
-          <Anchor>Forgot your password?</Anchor>
+          <Anchor>Esqueceu sua senha?</Anchor>
         </FlexRow>
 
         <ButtonsContainer>
-          <Button text="Sign in" onClick={handleSubmit(onSubmit)} />
+          <Button text="Entrar" onClick={handleSubmit(onSubmit)} />
           <TwoLineAnchor
-            firstLine="Don't have an account yet?"
-            secondLine="Create an account now"
+            firstLine="Ainda não possui uma conta?"
+            secondLine="Criar conta agora"
             href="register"
           />
         </ButtonsContainer>

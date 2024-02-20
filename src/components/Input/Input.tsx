@@ -8,9 +8,7 @@ import {
   Label,
 } from "./styles";
 import { FieldError } from "react-hook-form";
-import { TextInputProps } from "react-native";
 import {
-  TextInputMask,
   TextInputMaskOptionProp,
   TextInputMaskTypeProp,
 } from "react-native-masked-text";

@@ -18,17 +18,12 @@ const UserAddress = () => {
 
   return (
     <>
-      {/* <Header>
-        <Title>Create Account</Title>
-        <Paragraph>Get started.</Paragraph>
-        <Paragraph>Fill the form and begin to look for new books.</Paragraph>
-      </Header> */}
       <Form>
         <Controller
           control={control}
           render={({ field: { onChange, onBlur, value } }) => (
             <Input
-              placeholder="00000-00"
+              placeholder="00000-000"
               value={value}
               onChangeText={onChange}
               onBlur={onBlur}
@@ -38,7 +33,7 @@ const UserAddress = () => {
             />
           )}
           rules={{
-            required: "Campo necessário",
+            required: "Preencha o campo",
             pattern: {
               value: /^[0-9]{5}-[0-9]{3}$/,
               message: "Digite um CEP válido",
@@ -50,18 +45,69 @@ const UserAddress = () => {
           control={control}
           render={({ field: { onChange, onBlur, value } }) => (
             <Input
-              placeholder="Digite seu bairro"
+              placeholder="Digite seu estado"
               value={value}
               onChangeText={onChange}
               onBlur={onBlur}
               label="Estado"
-              error={errors.estado}
+              error={errors.state}
             />
           )}
           rules={{
-            required: "Campo necessário",
+            required: "Preencha o campo",
           }}
-          name="estado"
+          name="state"
+        />
+        <Controller
+          control={control}
+          render={({ field: { onChange, onBlur, value } }) => (
+            <Input
+              placeholder="Digite sua cidade"
+              value={value}
+              onChangeText={onChange}
+              onBlur={onBlur}
+              label="Cidade"
+              error={errors.city}
+            />
+          )}
+          rules={{
+            required: "Preencha o campo",
+          }}
+          name="city"
+        />
+        <Controller
+          control={control}
+          render={({ field: { onChange, onBlur, value } }) => (
+            <Input
+              placeholder="Digite seu bairro"
+              value={value}
+              onChangeText={onChange}
+              onBlur={onBlur}
+              label="Bairro"
+              error={errors.neighborhood}
+            />
+          )}
+          rules={{
+            required: "Preencha o campo",
+          }}
+          name="neighborhood"
+        />
+        <Controller
+          control={control}
+          render={({ field: { onChange, onBlur, value } }) => (
+            <Input
+              placeholder="Digite sua rua"
+              value={value}
+              onChangeText={onChange}
+              onBlur={onBlur}
+              label="Rua"
+              error={errors.street}
+            />
+          )}
+          rules={{
+            required: "Preencha o campo",
+          }}
+          name="street"
         />
         <Controller
           control={control}
@@ -72,13 +118,13 @@ const UserAddress = () => {
               onChangeText={onChange}
               onBlur={onBlur}
               label="Número"
-              error={errors.numero}
+              error={errors.houseNumber}
             />
           )}
           rules={{
-            required: "Campo necessário",
+            required: "Preencha o campo",
           }}
-          name="numero"
+          name="houseNumber"
         />
         <Controller
           control={control}
@@ -89,10 +135,10 @@ const UserAddress = () => {
               onChangeText={onChange}
               onBlur={onBlur}
               label="Complemento"
-              error={errors.complemento}
+              error={errors.addressSuplement}
             />
           )}
-          name="complemento"
+          name="addressSuplement"
         />
         <ButtonsContainer>
           <Button text="Sign up" onClick={handleSubmit(onSubmit)} />

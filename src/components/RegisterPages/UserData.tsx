@@ -26,45 +26,40 @@ const UserData = () => {
 
   return (
     <>
-      {/* <Header>
-        <Title>Create Account</Title>
-        <Paragraph>Get started.</Paragraph>
-        <Paragraph>Fill the form and begin to look for new books.</Paragraph>
-      </Header> */}
       <Form>
         <Controller
           control={control}
           render={({ field: { onChange, onBlur, value } }) => (
             <Input
-              placeholder="Type your first name"
+              placeholder="Digite seu nome"
               value={value}
               onChangeText={onChange}
               onBlur={onBlur}
               label="First name"
-              error={errors.firstName}
+              error={errors.name}
             />
           )}
           rules={{
-            required: "Name is required",
+            required: "Preencha o campo",
           }}
-          name="firstName"
+          name="name"
         />
         <Controller
           control={control}
           render={({ field: { onChange, onBlur, value } }) => (
             <Input
-              placeholder="Type your second name"
+              placeholder="Digite seu sobrenome"
               value={value}
               onChangeText={onChange}
               onBlur={onBlur}
-              label="Second name"
-              error={errors.secondName}
+              label="Sobrenome"
+              error={errors.lastName}
             />
           )}
           rules={{
-            required: "Name is required",
+            required: "Preencha o campo",
           }}
-          name="secondName"
+          name="lastName"
         />
         <Controller
           control={control}
@@ -76,18 +71,18 @@ const UserData = () => {
               onBlur={onBlur}
               label="CPF"
               mask={{ type: "cpf", options: {} }}
-              error={errors.CPF}
+              error={errors.cpf}
             />
           )}
           rules={{
-            required: "CPF is required",
+            required: "Preencha o campo",
             pattern: {
               value:
                 /^([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})/,
-              message: "Enter with a valid CPF",
+              message: "Digite um CPF válido",
             },
           }}
-          name="CPF"
+          name="cpf"
         />
         <Controller
           control={control}
@@ -110,7 +105,7 @@ const UserData = () => {
             />
           )}
           rules={{
-            required: "Phone is required",
+            required: "Preencha o campo",
           }}
           name="phone"
         />

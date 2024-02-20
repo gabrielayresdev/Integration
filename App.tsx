@@ -10,11 +10,11 @@ export default function App() {
   return <Routes />;
 }
 {
-  /* <View>
-      <RegisterContextProvider>
-        <Register />
-      </RegisterContextProvider>
-    </View> */
+  <View>
+    <RegisterContextProvider>
+      <Register />
+    </RegisterContextProvider>
+  </View>;
 }
 const styles = StyleSheet.create({
   container: {

@@ -27,11 +27,6 @@ const UserAuth = () => {
 
   return (
     <>
-      {/* <Header>
-        <Title>Create Account</Title>
-        <Paragraph>Get started.</Paragraph>
-        <Paragraph>Fill the form and begin to look for new books.</Paragraph>
-      </Header> */}
       <Form>
         <Controller
           control={control}
@@ -46,11 +41,11 @@ const UserAuth = () => {
             />
           )}
           rules={{
-            required: "Email is required",
+            required: "Preencha o campo",
             pattern: {
               value:
                 /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/,
-              message: "Enter with a valid email",
+              message: "Use um email válido",
             },
           }}
           name="email"
@@ -63,13 +58,13 @@ const UserAuth = () => {
               value={value}
               onChangeText={onChange}
               onBlur={onBlur}
-              label="Password"
+              label="Senha"
               error={errors.password}
               secureTextEntry
             />
           )}
           rules={{
-            required: "Password is required",
+            required: "Preencha o campo",
           }}
           name="password"
         />
@@ -81,13 +76,13 @@ const UserAuth = () => {
               value={value}
               onChangeText={onChange}
               onBlur={onBlur}
-              label="Password"
+              label="Confirmar senha"
               error={errors.password2}
               secureTextEntry
             />
           )}
           rules={{
-            required: "Confirm your password",
+            required: "Preencha o campo",
             validate: (value) =>
               value === passwordRef.current || "As senhas não coincidem",
           }}
@@ -95,10 +90,10 @@ const UserAuth = () => {
         />
 
         <ButtonsContainer>
-          <Button text="Sign up" onClick={handleSubmit(onSubmit)} />
+          <Button text="Cadastrar" onClick={handleSubmit(onSubmit)} />
           <TwoLineAnchor
-            firstLine="Already have an account?"
-            secondLine="Sign in now"
+            firstLine="Já possui uma contar?"
+            secondLine="Entre agora"
             href="login"
           />
         </ButtonsContainer>
