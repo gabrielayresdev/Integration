@@ -7,10 +7,48 @@ import { Form, ButtonsContainer } from "../../styles/formStyles";
 import { Controller } from "react-hook-form";
 import Input from "../Input/Input";
 import Button from "../Button/Button";
+import axios from "axios";
 
 const UserAddress = () => {
-  const { pagination, control, handleSubmit, errors, watch } =
-    useRegisterContext();
+  const {
+    pagination,
+    control,
+    handleSubmit,
+    errors,
+    watch,
+    getValues,
+    setValue,
+  } = useRegisterContext();
+
+  const cepRef = React.useRef<string>();
+  cepRef.current = watch("CEP", "");
+
+  React.useEffect(() => {
+    async function getAddressData() {
+      const cep = cepRef.current;
+      console.log(cep);
+      if (cep?.length === 9) {
+        const left = cep.substring(0, 5);
+        const right = cep.substring(6, 9);
+        const formatedCep = `${left}${right}`;
+        const request = await axios.get(
+          `https://viacep.com.br/ws/${formatedCep}/json`
+        );
+        const { data, status } = request;
+        if (status === 200 && data) {
+          console.log(data);
+          if (getValues("state").length === 0) setValue("state", data.uf);
+          if (getValues("city").length === 0) setValue("city", data.localidade);
+          if (getValues("neighborhood").length === 0)
+            setValue("neighborhood", data.bairro);
+          if (getValues("street").length === 0)
+            setValue("street", data.logradouro);
+        }
+      }
+    }
+
+    getAddressData();
+  }, [cepRef.current]);
 
   const onSubmit = (data: RegisterDataInterface) => {
     pagination.goNext();
