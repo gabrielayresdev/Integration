@@ -13,10 +13,11 @@ import { useRegisterContext } from "../../contexts/RegisterContext";
 import UserAuth from "../../components/RegisterPages/UserAuth";
 import UserData from "../../components/RegisterPages/UserData";
 import UserAddress from "../../components/RegisterPages/UserAddress";
+import SuccessPage from "../SuccessPage/SuccessPage";
 
 const Register = () => {
   const { pagination } = useRegisterContext();
-  const pages = [<UserAuth />, <UserData />, <UserAddress />];
+  const pages = [<UserAuth />, <UserData />, <UserAddress />, <SuccessPage />];
 
   return (
     <RegisterDiv>
