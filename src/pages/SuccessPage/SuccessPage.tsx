@@ -7,7 +7,7 @@ import {
   Text,
   UpperDetail,
 } from "./styles";
-import Button from "../Button/Button";
+import Button from "../../components/Button/Button";
 
 const SuccessPage = () => {
   const animationRef = React.useRef<LottieView | null>(null);
