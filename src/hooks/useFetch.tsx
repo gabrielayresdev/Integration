@@ -45,6 +45,10 @@ function useFetch<T>(
     }
 
     request();
+
+    return () => {
+      controller.abort();
+    };
   }, [url]);
 
   return { data, error, loading };
