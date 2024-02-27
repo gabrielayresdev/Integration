@@ -8,6 +8,8 @@ import { Controller } from "react-hook-form";
 import Input from "../Input/Input";
 import Button from "../Button/Button";
 import axios from "axios";
+import userService from "../../services/userService.ts";
+import registerDataFormat from "../../utils/registerDataFormat.ts";
 
 const UserAddress = () => {
   const {
@@ -50,8 +52,20 @@ const UserAddress = () => {
     getAddressData();
   }, [cepRef.current]);
 
-  const onSubmit = (data: RegisterDataInterface) => {
-    pagination.goNext();
+  const onSubmit = async (data: RegisterDataInterface) => {
+    try {
+      const response = await userService
+        .register(registerDataFormat(data))
+        .then((response) => {
+          console.log(response);
+          return response;
+        });
+      if (response?.status === 200) {
+        pagination.goNext();
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
