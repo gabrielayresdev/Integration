@@ -16,6 +16,8 @@ import Checkbox from "../../components/Checkbox/Checkbox";
 import Button from "../../components/Button/Button";
 import TwoLineAnchor from "../../components/TwoLineAnchor/TwoLineAnchor";
 import { Controller, useForm } from "react-hook-form";
+import userService from "../../services/userService.ts";
+import { useNavigation } from "@react-navigation/native";
 
 interface FormData {
   email: string;
@@ -24,9 +26,20 @@ interface FormData {
 
 const Login = () => {
   const [remember, setRemember] = React.useState(false);
+  const navigation = useNavigation();
 
-  const onSubmit = (data: FormData) => {
-    console.log(data);
+  const onSubmit = async (data: { email: string; password: string }) => {
+    try {
+      const response = await userService.login(data).then((response) => {
+        console.log(response);
+        return response;
+      });
+      if (response?.status === 200) {
+        navigation.navigate("profile");
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const {
