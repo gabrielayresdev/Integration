@@ -18,10 +18,10 @@ export interface RegisterDataInterface {
   password2: string;
   name: string;
   lastName: string;
-  birthday: string;
+  birthDate: string;
   cpf: string;
   phone: string;
-  CEP: string;
+  cep: string;
   state: string;
   city: string;
   neighborhood: string;
@@ -46,10 +46,10 @@ interface IRegisterContext {
       password2: string;
       name: string;
       lastName: string;
-      birthday: string;
+      birthDate: string;
       cpf: string;
       phone: string;
-      CEP: string;
+      cep: string;
       state: string;
       city: string;
       neighborhood: string;
@@ -64,10 +64,10 @@ interface IRegisterContext {
       password2: string;
       name: string;
       lastName: string;
-      birthday: string;
+      birthDate: string;
       cpf: string;
       phone: string;
-      CEP: string;
+      cep: string;
       state: string;
       city: string;
       neighborhood: string;
@@ -83,10 +83,10 @@ interface IRegisterContext {
       password2: string;
       name: string;
       lastName: string;
-      birthday: string;
+      birthDate: string;
       cpf: string;
       phone: string;
-      CEP: string;
+      cep: string;
       state: string;
       city: string;
       neighborhood: string;
@@ -100,10 +100,10 @@ interface IRegisterContext {
       password2: string;
       name: string;
       lastName: string;
-      birthday: string;
+      birthDate: string;
       cpf: string;
       phone: string;
-      CEP: string;
+      cep: string;
       state: string;
       city: string;
       neighborhood: string;
@@ -118,10 +118,10 @@ interface IRegisterContext {
     password2: string;
     name: string;
     lastName: string;
-    birthday: string;
+    birthDate: string;
     cpf: string;
     phone: string;
-    CEP: string;
+    cep: string;
     state: string;
     city: string;
     neighborhood: string;
@@ -135,10 +135,10 @@ interface IRegisterContext {
     password2: string;
     name: string;
     lastName: string;
-    birthday: string;
+    birthDate: string;
     cpf: string;
     phone: string;
-    CEP: string;
+    cep: string;
     state: string;
     city: string;
     neighborhood: string;
@@ -152,10 +152,10 @@ interface IRegisterContext {
     password2: string;
     name: string;
     lastName: string;
-    birthday: string;
+    birthDate: string;
     cpf: string;
     phone: string;
-    CEP: string;
+    cep: string;
     state: string;
     city: string;
     neighborhood: string;
@@ -169,10 +169,10 @@ interface IRegisterContext {
     password2: string;
     name: string;
     lastName: string;
-    birthday: string;
+    birthDate: string;
     cpf: string;
     phone: string;
-    CEP: string;
+    cep: string;
     state: string;
     city: string;
     neighborhood: string;
@@ -203,10 +203,10 @@ const RegisterContextProvider = ({ children }: React.PropsWithChildren) => {
       password2: "",
       name: "",
       lastName: "",
-      birthday: "",
+      birthDate: "",
       cpf: "",
       phone: "",
-      CEP: "",
+      cep: "",
       state: "",
       city: "",
       neighborhood: "",

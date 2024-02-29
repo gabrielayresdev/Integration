@@ -8,6 +8,12 @@ import {
   UpperDetail,
 } from "./styles";
 import Button from "../../components/Button/Button";
+import {
+  BottomDetails,
+  BottomDetailsFirstSvg,
+  CircleDetails,
+} from "../../styles/formStyles";
+import { Circle, Svg } from "react-native-svg";
 
 const SuccessPage = () => {
   const animationRef = React.useRef<LottieView | null>(null);
@@ -22,11 +28,18 @@ const SuccessPage = () => {
 
   return (
     <Container>
-      <UpperDetail source={require("../../assets/Detail.png")} />
+      <CircleDetails
+        width="445px"
+        viewBox="0 0 100 100"
+        left="-222.5px"
+        top="-268px"
+      >
+        <Circle cx="50" cy="50" r="50" strokeWidth=".5" fill="#0096c71a" />
+      </CircleDetails>
       <LottieView
         style={{ transform: [{ scale: 1.8 }] }}
         ref={animationRef}
-        source={require("../../assets/success-animation.json")}
+        source={require("../../../assets/success-animation.json")}
         autoPlay
         loop={false}
         progress={1} // Set progress to 1 to show the animation fully scaled
@@ -43,7 +56,18 @@ const SuccessPage = () => {
           radius=".25rem"
         />
       </ButtonContainer>
-      <BottomDetail source={require("../../assets/Horizontal-wave.png")} />
+      <BottomDetails>
+        <BottomDetailsFirstSvg
+          width="262px"
+          height="262px"
+          viewBox="0 0 100 100"
+        >
+          <Circle cx="50" cy="50" r="50" strokeWidth=".5" fill="#48CAE4" />
+        </BottomDetailsFirstSvg>
+        <Svg width="445px" height="445px" viewBox="0 0 100 100">
+          <Circle cx="50" cy="50" r="50" strokeWidth=".5" fill="#00B4D8" />
+        </Svg>
+      </BottomDetails>
     </Container>
   );
 };
