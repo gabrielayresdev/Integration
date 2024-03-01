@@ -5,6 +5,7 @@ import Register from "../pages/Register/Register";
 import RegisterContextProvider from "../contexts/RegisterContext";
 import Authenticate from "../contexts/Auth/Authenticate";
 import UserContextProvider from "../contexts/UserContext";
+import Profile from "../pages/Profile/Profile";
 
 export type NativeStackParamList = {
   login: undefined;
@@ -16,10 +17,13 @@ const Stack = createNativeStackNavigator<NativeStackParamList>();
 
 export default function StackRoutes() {
   return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="login" component={Login} />
+    <Stack.Navigator
+      screenOptions={{ headerShown: false }}
+      initialRouteName="login"
+    >
+      <Stack.Screen name="login" component={LoginAuthenticated} />
       <Stack.Screen name="register" component={RegisterWithContext} />
-      <Stack.Screen name="profile" component={ProfileWithContext} />
+      <Stack.Screen name="profile" component={Profile} />
     </Stack.Navigator>
   );
 }
@@ -32,10 +36,10 @@ function RegisterWithContext() {
   );
 }
 
-function ProfileWithContext() {
+function LoginAuthenticated() {
   return (
-    <UserContextProvider>
-      <Authenticate />
-    </UserContextProvider>
+    <Authenticate>
+      <Login />
+    </Authenticate>
   );
 }

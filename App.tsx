@@ -5,17 +5,16 @@ import Register from "./src/pages/Register/Register";
 import RegisterContextProvider from "./src/contexts/RegisterContext";
 import "react-native-gesture-handler";
 import Routes from "./src/routes";
+import UserContextProvider from "./src/contexts/UserContext";
 
 export default function App() {
-  return <Routes />;
+  return (
+    <UserContextProvider>
+      <Routes />
+    </UserContextProvider>
+  );
 }
-{
-  <View>
-    <RegisterContextProvider>
-      <Register />
-    </RegisterContextProvider>
-  </View>;
-}
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,

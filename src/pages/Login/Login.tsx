@@ -31,7 +31,9 @@ const Login = () => {
   const onSubmit = async (data: { email: string; password: string }) => {
     try {
       const response = await userService.login(data).then((response) => {
+        console.log("Login response:");
         console.log(response);
+        console.log("==========");
         return response;
       });
       if (response?.status === 200) {
