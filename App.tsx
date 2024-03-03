@@ -6,11 +6,13 @@ import RegisterContextProvider from "./src/contexts/RegisterContext";
 import "react-native-gesture-handler";
 import Routes from "./src/routes";
 import UserContextProvider from "./src/contexts/UserContext";
+import Profile from "./src/pages/Profile/Profile";
 
 export default function App() {
   return (
     <UserContextProvider>
-      <Routes />
+      {/*  <Routes /> */}
+      <Profile />
     </UserContextProvider>
   );
 }
