@@ -23,3 +23,10 @@ export const SwitchItem = styled.Text<{ active?: boolean }>`
   border-bottom-width: 2px;
   transition: all 0.3s;
 `;
+
+export const Span = styled.View<{ color: string }>`
+  width: 100vw;
+  min-height: 50vh;
+  display: block;
+  background: ${({ color }) => color};
+`;

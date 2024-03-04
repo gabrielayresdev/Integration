@@ -6,7 +6,8 @@ import userService from "../../services/userService.ts";
 import { useNavigation } from "@react-navigation/native";
 import { Controller, useForm } from "react-hook-form";
 import usePagination from "../../hooks/usePagination.tsx";
-import { Switch, SwitchItem } from "./styles.tsx";
+import { Span, Switch, SwitchItem } from "./styles.tsx";
+import PageSlider from "../../components/PageSlider/PageSlider.tsx";
 
 const Profile = () => {
   /* const { user } = useUserContext(); */
@@ -63,6 +64,10 @@ const Profile = () => {
             Endereço
           </SwitchItem>
         </Switch>
+        <PageSlider page={page}>
+          <Span color="#ff0000"></Span>
+          <Span color="#3cff00"></Span>
+        </PageSlider>
         {/* <Text>
           {user.name} - {user.email}
         </Text>
