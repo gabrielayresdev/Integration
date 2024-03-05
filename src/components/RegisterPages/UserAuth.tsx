@@ -16,14 +16,10 @@ import Button from "../Button/Button";
 import TwoLineAnchor from "../TwoLineAnchor/TwoLineAnchor";
 
 const UserAuth = () => {
-  const { pagination, control, handleSubmit, errors, watch } =
+  const { pagination, control, trigger, handlePartialSubmit, errors, watch } =
     useRegisterContext();
   const passwordRef = React.useRef<string>();
   passwordRef.current = watch("password", "");
-
-  const onSubmit = (data: RegisterDataInterface) => {
-    pagination.goNext();
-  };
 
   return (
     <>
@@ -34,7 +30,10 @@ const UserAuth = () => {
             <Input
               placeholder="email@example.com"
               value={value}
-              onChangeText={onChange}
+              onChangeText={(text) => {
+                onChange(text);
+                if (errors.email) trigger("email");
+              }}
               onBlur={onBlur}
               label="Email"
               error={errors.email}
@@ -56,7 +55,10 @@ const UserAuth = () => {
             <Input
               placeholder="••••••••••••••••••••"
               value={value}
-              onChangeText={onChange}
+              onChangeText={(text) => {
+                onChange(text);
+                if (errors.password) trigger("password");
+              }}
               onBlur={onBlur}
               label="Senha"
               error={errors.password}
@@ -74,7 +76,10 @@ const UserAuth = () => {
             <Input
               placeholder="••••••••••••••••••••"
               value={value}
-              onChangeText={onChange}
+              onChangeText={(text) => {
+                onChange(text);
+                if (errors.password2) trigger("password2");
+              }}
               onBlur={onBlur}
               label="Confirmar senha"
               error={errors.password2}
@@ -90,9 +95,17 @@ const UserAuth = () => {
         />
 
         <ButtonsContainer>
-          <Button text="Cadastrar" onClick={handleSubmit(onSubmit)} />
+          <Button
+            text="Cadastrar"
+            onClick={() =>
+              handlePartialSubmit(
+                ["email", "password", "password2"],
+                pagination.goNext
+              )
+            }
+          />
           <TwoLineAnchor
-            firstLine="Já possui uma contar?"
+            firstLine="Já possui uma conta?"
             secondLine="Entre agora"
             href="login"
           />

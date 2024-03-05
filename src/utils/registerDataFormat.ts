@@ -4,7 +4,7 @@ import { RegisterData } from "../services/userService.ts";
 export default function registerDataFormat(
   data: RegisterDataInterface
 ): RegisterData {
-  const parts = data.birthday.split("/");
+  const parts = data.birthDate.split("/");
   const date = new Date(`${parts[2]}-${parts[1]}-${parts[0]}`).toISOString();
 
   return {
@@ -16,7 +16,7 @@ export default function registerDataFormat(
     state: data.state,
     city: data.city,
     neighborhood: data.neighborhood,
-    cep: data.CEP,
+    cep: data.cep,
     street: data.street,
     houseNumber: data.houseNumber,
     addressSupplement: data.addressSuplement,

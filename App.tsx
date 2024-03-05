@@ -7,12 +7,14 @@ import "react-native-gesture-handler";
 import Routes from "./src/routes";
 import UserContextProvider from "./src/contexts/UserContext";
 import Profile from "./src/pages/Profile/Profile";
+import YourForm from "./src/components/RegisterPages/YourForm";
 
 export default function App() {
   return (
     <UserContextProvider>
-      {/*  <Routes /> */}
-      <Profile />
+      <Routes />
+      {/* <YourForm /> */}
+      {/* <Profile /> */}
     </UserContextProvider>
   );
 }

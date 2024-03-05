@@ -14,10 +14,10 @@ import UserAuth from "../../components/RegisterPages/UserAuth";
 import UserData from "../../components/RegisterPages/UserData";
 import UserAddress from "../../components/RegisterPages/UserAddress";
 import SuccessPage from "../SuccessPage/SuccessPage";
+import PageSlider from "../../components/PageSlider/PageSlider";
 
 const Register = () => {
   const { pagination } = useRegisterContext();
-  const pages = [<UserAuth />, <UserData />, <UserAddress />, <SuccessPage />];
 
   return (
     <RegisterDiv>
@@ -34,7 +34,16 @@ const Register = () => {
         <Paragraph>Get started.</Paragraph>
         <Paragraph>Fill the form and begin to look for new books.</Paragraph>
       </Header>
-      {pages[pagination.page]}
+      {pagination.page === 3 ? (
+        <SuccessPage />
+      ) : (
+        <PageSlider page={pagination.page}>
+          <UserAuth />
+          <UserData />
+          <UserAddress />
+        </PageSlider>
+      )}
+      {/* {pages[pagination.page]} */}
       <BottomDetails>
         <BottomDetailsFirstSvg
           width="262px"

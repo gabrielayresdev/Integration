@@ -78,7 +78,7 @@ const UserAddress = () => {
               onChangeText={onChange}
               onBlur={onBlur}
               label="CEP"
-              error={errors.CEP}
+              error={errors.cep}
               mask={{ type: "custom", options: { mask: "99999-999" } }}
             />
           )}
@@ -89,7 +89,7 @@ const UserAddress = () => {
               message: "Digite um CEP válido",
             },
           }}
-          name="CEP"
+          name="cep"
         />
         <Controller
           control={control}
@@ -194,7 +194,7 @@ const UserAddress = () => {
           <Button text="Sign up" onClick={handleSubmit(onSubmit)} />
           <Button
             text="Go back"
-            onClick={() => {}}
+            onClick={() => pagination.goBack()}
             background="transparent"
             color="#33415C"
             padding="0"

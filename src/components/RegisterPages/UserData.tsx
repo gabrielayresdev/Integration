@@ -15,12 +15,10 @@ import Input from "../Input/Input";
 import Button from "../Button/Button";
 
 const UserData = () => {
-  const { pagination, control, handleSubmit, errors, watch } =
+  const { pagination, control, errors, trigger, handlePartialSubmit } =
     useRegisterContext();
-  const passwordRef = React.useRef<string>();
-  passwordRef.current = watch("password", "");
 
-  const onSubmit = (data: RegisterDataInterface) => {
+  const onSubmit = () => {
     pagination.goNext();
   };
 
@@ -33,7 +31,10 @@ const UserData = () => {
             <Input
               placeholder="Digite seu nome"
               value={value}
-              onChangeText={onChange}
+              onChangeText={(text) => {
+                onChange(text);
+                if (errors.name) trigger("name");
+              }}
               onBlur={onBlur}
               label="First name"
               error={errors.name}
@@ -50,7 +51,10 @@ const UserData = () => {
             <Input
               placeholder="Digite seu sobrenome"
               value={value}
-              onChangeText={onChange}
+              onChangeText={(text) => {
+                onChange(text);
+                if (errors.lastName) trigger("lastName");
+              }}
               onBlur={onBlur}
               label="Sobrenome"
               error={errors.lastName}
@@ -65,9 +69,42 @@ const UserData = () => {
           control={control}
           render={({ field: { onChange, onBlur, value } }) => (
             <Input
+              placeholder="DD/MM/YYYY"
+              value={value}
+              onChangeText={(text) => {
+                onChange(text);
+                if (errors.birthDate) trigger("birthDate");
+              }}
+              onBlur={onBlur}
+              label="Data de nascimento"
+              error={errors.birthDate}
+              mask={{
+                type: "datetime",
+                options: {
+                  format: "DD/MM/YYYY",
+                },
+              }}
+            />
+          )}
+          rules={{
+            required: "Preencha o campo",
+            pattern: {
+              value: /^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/\d{4}$/,
+              message: "Data inválida",
+            },
+          }}
+          name="birthDate"
+        />
+        <Controller
+          control={control}
+          render={({ field: { onChange, onBlur, value } }) => (
+            <Input
               placeholder="000.000.000-00"
               value={value}
-              onChangeText={onChange}
+              onChangeText={(text) => {
+                onChange(text);
+                if (errors.cpf) trigger("cpf");
+              }}
               onBlur={onBlur}
               label="CPF"
               mask={{ type: "cpf", options: {} }}
@@ -90,7 +127,10 @@ const UserData = () => {
             <Input
               placeholder="(021) 00000-0000"
               value={value}
-              onChangeText={onChange}
+              onChangeText={(text) => {
+                onChange(text);
+                if (errors.phone) trigger("phone");
+              }}
               onBlur={onBlur}
               label="Phone"
               error={errors.phone}
@@ -111,7 +151,15 @@ const UserData = () => {
         />
 
         <ButtonsContainer>
-          <Button text="Sign up" onClick={handleSubmit(onSubmit)} />
+          <Button
+            text="Sign up"
+            onClick={() =>
+              handlePartialSubmit(
+                ["name", "lastName", "birthDate", "cpf", "phone"],
+                pagination.goNext
+              )
+            }
+          />
           <Button
             text="Go back"
             onClick={() => pagination.goBack()}

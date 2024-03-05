@@ -8,6 +8,7 @@ import {
   UseFormSetValue,
   UseFormWatch,
   useForm,
+  UseFormTrigger,
 } from "react-hook-form";
 
 const RegisterContext = React.createContext<IRegisterContext | null>(null);
@@ -180,6 +181,27 @@ interface IRegisterContext {
     houseNumber: string;
     addressSuplement: string;
   }>;
+  trigger: UseFormTrigger<{
+    email: string;
+    password: string;
+    password2: string;
+    name: string;
+    lastName: string;
+    birthDate: string;
+    cpf: string;
+    phone: string;
+    cep: string;
+    state: string;
+    city: string;
+    neighborhood: string;
+    street: string;
+    houseNumber: string;
+    addressSuplement: string;
+  }>;
+  handlePartialSubmit: (
+    fields: (keyof RegisterDataInterface)[],
+    callback: Function
+  ) => void;
 }
 
 export function useRegisterContext() {
@@ -196,6 +218,7 @@ const RegisterContextProvider = ({ children }: React.PropsWithChildren) => {
     watch,
     setValue,
     getValues,
+    trigger,
   } = useForm({
     defaultValues: {
       email: "",
@@ -218,6 +241,18 @@ const RegisterContextProvider = ({ children }: React.PropsWithChildren) => {
 
   const pagination = usePagination(4);
 
+  const handlePartialSubmit = async (
+    fields: (keyof RegisterDataInterface)[],
+    callback: Function
+  ) => {
+    const isFieldsValid = await Promise.all(
+      fields.map((field) => trigger(field))
+    );
+    if (isFieldsValid.every((valid) => valid)) {
+      callback();
+    }
+  };
+
   return (
     <RegisterContext.Provider
       value={{
@@ -228,6 +263,8 @@ const RegisterContextProvider = ({ children }: React.PropsWithChildren) => {
         watch,
         setValue,
         getValues,
+        trigger,
+        handlePartialSubmit,
       }}
     >
       {children}
