@@ -39,8 +39,8 @@ const Register = () => {
       ) : (
         <PageSlider page={pagination.page}>
           <UserAuth />
-          <UserData />
-          <UserAddress />
+          {pagination.page >= 1 && <UserData />}
+          {pagination.page >= 2 && <UserAddress />}
         </PageSlider>
       )}
       {/* {pages[pagination.page]} */}

@@ -111,7 +111,6 @@ const UserAuth = () => {
           />
         </ButtonsContainer>
       </Form>
-      )
     </>
   );
 };

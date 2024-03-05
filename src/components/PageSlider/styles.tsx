@@ -2,7 +2,7 @@ import styled from "styled-components/native";
 
 export const Container = styled.View<{ page: number }>`
   width: 100vw;
-  overflow-x: hidden;
+  overflow-x: auto;
   flex-direction: row;
   display: block;
 `;

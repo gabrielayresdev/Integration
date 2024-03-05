@@ -169,7 +169,6 @@ const UserData = () => {
           />
         </ButtonsContainer>
       </Form>
-      )
     </>
   );
 };
