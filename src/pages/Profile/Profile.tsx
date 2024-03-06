@@ -8,6 +8,8 @@ import { Controller, useForm } from "react-hook-form";
 import usePagination from "../../hooks/usePagination.tsx";
 import { Span, Switch, SwitchItem } from "./styles.tsx";
 import PageSlider from "../../components/PageSlider/PageSlider.tsx";
+import PersonalData from "../ProfileForms/PersonalData.tsx";
+import AddressData from "../ProfileForms/AddressData.tsx";
 
 const Profile = () => {
   /* const { user } = useUserContext(); */
@@ -27,13 +29,15 @@ const Profile = () => {
     street: "Rua Piauí",
     houseNumber: "405",
     imgUrl: null,
+    addressSuplement: "",
   };
 
-  const {
+  /*  const {
     control,
     handleSubmit,
     formState: { errors },
-  } = useForm({
+  } */
+  const form = useForm({
     defaultValues: user,
   });
 
@@ -65,8 +69,10 @@ const Profile = () => {
           </SwitchItem>
         </Switch>
         <PageSlider page={page}>
-          <Span color="#ff0000"></Span>
-          <Span color="#3cff00"></Span>
+          {/* <Span color="#ff0000"></Span>
+          <Span color="#3cff00"></Span> */}
+          <PersonalData form={form} />
+          <AddressData form={form} />
         </PageSlider>
         {/* <Text>
           {user.name} - {user.email}

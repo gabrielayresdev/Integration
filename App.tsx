@@ -12,9 +12,9 @@ import YourForm from "./src/components/RegisterPages/YourForm";
 export default function App() {
   return (
     <UserContextProvider>
-      <Routes />
+      {/* <Routes /> */}
       {/* <YourForm /> */}
-      {/* <Profile /> */}
+      <Profile />
     </UserContextProvider>
   );
 }
