@@ -11,7 +11,6 @@ interface formInterface {
       email: string;
       cpf: string;
       phone: string;
-      password: string;
       birthDate: string;
       cep: string;
       state: string;
@@ -29,7 +28,6 @@ interface formInterface {
       email: string;
       cpf: string;
       phone: string;
-      password: string;
       birthDate: string;
       cep: string;
       state: string;

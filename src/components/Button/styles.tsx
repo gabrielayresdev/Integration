@@ -13,7 +13,7 @@ export interface BtnStyledInterface {
 }
 
 export const Btn = styled.Pressable<BtnStyledInterface>`
-  background: ${({ background }) => (background ? background : "#023E8A")};
+  background: ${({ background }) => (background ? background : "#007AFF")};
   padding-right: ${({ paddingRight, padding }) =>
     paddingRight ? paddingRight : padding ? padding : ".975rem"};
   padding-left: ${({ paddingLeft, padding }) =>

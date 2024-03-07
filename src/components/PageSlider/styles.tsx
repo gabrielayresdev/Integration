@@ -14,3 +14,9 @@ export const Slider = styled.View<{ page: number }>`
   flex-direction: row;
   transition: all 0.3s;
 `;
+
+export const ButtonContainer = styled.View`
+  width: 50%;
+  margin: 1rem;
+  align-self: flex-end;
+`;
