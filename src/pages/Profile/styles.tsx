@@ -1,7 +1,7 @@
 import styled from "styled-components/native";
 
 export const Switch = styled.View`
-  margin: 2.5rem 0 4.5rem;
+  margin: 2.5rem 0 2.5rem;
   border-bottom-color: #33415c;
   border-bottom-width: 1px;
   width: 100%;

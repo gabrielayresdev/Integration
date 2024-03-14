@@ -11,6 +11,27 @@ import PageSlider from "../../components/PageSlider/PageSlider.tsx";
 import PersonalData from "../ProfileForms/PersonalData.tsx";
 import AddressData from "../ProfileForms/AddressData.tsx";
 import { ButtonContainer } from "../../components/PageSlider/styles.tsx";
+import AuthData from "../ProfileForms/AuthData.tsx";
+
+export interface userForm {
+  name: string;
+  lastName: string;
+  email: string;
+  password: string;
+  newPassword: string;
+  newPassword2: string;
+  cpf: string;
+  phone: string;
+  birthDate: string;
+  cep: string;
+  state: string;
+  city: string;
+  neighborhood: string;
+  street: string;
+  houseNumber: string;
+  imgUrl: null;
+  addressSuplement: string;
+}
 
 const Profile = () => {
   /* const { user } = useUserContext(); */
@@ -19,6 +40,9 @@ const Profile = () => {
     name: "Gabriel",
     lastName: "Ayres Fortunato",
     email: "gabriel.ar.fort@gmail.com",
+    password: "",
+    newPassword: "",
+    newPassword2: "",
     cpf: "13404795750",
     phone: "21967213085",
     birthDate: "2003-04-22",
@@ -38,22 +62,7 @@ const Profile = () => {
 
   const { page, goTo } = usePagination(2);
 
-  const onSubmit = (data: {
-    name: string;
-    lastName: string;
-    email: string;
-    cpf: string;
-    phone: string;
-    birthDate: string;
-    cep: string;
-    state: string;
-    city: string;
-    neighborhood: string;
-    street: string;
-    houseNumber: string;
-    imgUrl: null;
-    addressSuplement: string;
-  }) => {
+  const onSubmit = (data: userForm) => {
     try {
       const response = userService.updateData(data).then((response) => {
         return response;
@@ -83,17 +92,16 @@ const Profile = () => {
       <View>
         <Switch>
           <SwitchItem active={page === 0} onPress={() => goTo(0)}>
-            Dados pessoais
+            Autenticação
           </SwitchItem>
           <SwitchItem active={page === 1} onPress={() => goTo(1)}>
-            Endereço
+            Dados pessoais
           </SwitchItem>
         </Switch>
         <PageSlider page={page}>
-          {/* <Span color="#ff0000"></Span>
-          <Span color="#3cff00"></Span> */}
-          <PersonalData form={form} />
-          {page === 1 && <AddressData form={form} />}
+          <AuthData form={form} />
+          {page === 1 && <PersonalData form={form} />}
+          {page === 2 && <AddressData form={form} />}
         </PageSlider>
 
         <ButtonContainer>

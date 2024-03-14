@@ -2,43 +2,10 @@ import React from "react";
 import { Form } from "../../styles/formStyles";
 import { Controller, UseFormReturn } from "react-hook-form";
 import Input from "../../components/Input/Input";
+import { userForm } from "../Profile/Profile";
 
 interface formInterface {
-  form: UseFormReturn<
-    {
-      name: string;
-      lastName: string;
-      email: string;
-      cpf: string;
-      phone: string;
-      birthDate: string;
-      cep: string;
-      state: string;
-      city: string;
-      neighborhood: string;
-      street: string;
-      houseNumber: string;
-      imgUrl: null;
-      addressSuplement: string;
-    },
-    any,
-    {
-      name: string;
-      lastName: string;
-      email: string;
-      cpf: string;
-      phone: string;
-      birthDate: string;
-      cep: string;
-      state: string;
-      city: string;
-      neighborhood: string;
-      street: string;
-      houseNumber: string;
-      imgUrl: null;
-      addressSuplement: string;
-    }
-  >;
+  form: UseFormReturn<userForm, any, userForm>;
 }
 
 const AddressData = ({ form }: formInterface) => {
