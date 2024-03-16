@@ -101,7 +101,6 @@ const Profile = () => {
         <PageSlider page={page}>
           <AuthData form={form} />
           {page === 1 && <PersonalData form={form} />}
-          {page === 2 && <AddressData form={form} />}
         </PageSlider>
 
         <ButtonContainer>

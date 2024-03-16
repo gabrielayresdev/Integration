@@ -6,11 +6,12 @@ import RegisterContextProvider from "../contexts/RegisterContext";
 import Authenticate from "../contexts/Auth/Authenticate";
 import UserContextProvider from "../contexts/UserContext";
 import Profile from "../pages/Profile/Profile";
+import DrawerRoutes from "./drawer.routes";
 
 export type NativeStackParamList = {
   login: undefined;
   register: undefined;
-  profile: undefined;
+  home: undefined;
 };
 
 const Stack = createNativeStackNavigator<NativeStackParamList>();
@@ -23,7 +24,7 @@ export default function StackRoutes() {
     >
       <Stack.Screen name="login" component={LoginAuthenticated} />
       <Stack.Screen name="register" component={RegisterWithContext} />
-      <Stack.Screen name="profile" component={Profile} />
+      <Stack.Screen name="home" component={DrawerRoutes} />
     </Stack.Navigator>
   );
 }
